@@ -29,35 +29,23 @@ solve = do
           gid <- monotoneNFs
           let g = not . fromInt gid
 
+          let
+            ensure check = guard $ and $ do
+              x <- [True, False]
+              y <- [True, False]
+              z <- [True, False]
+              let f_val = f (x, y, z, False)
+              let g_val = g (x, y, z, f_val)
+              return $ check x y z f_val g_val
+
           xid <- monotoneNFs
-          guard $ and $ do
-            x <- [True, False]
-            y <- [True, False]
-            z <- [True, False]
-            let f_val = f (x, y, z, False)
-            let g_val = g (x, y, z, f_val)
-            let x_val = fromInt xid (y, z, f_val, g_val)
-            return $ x /= x_val
+          ensure (\x y z f g -> x /= fromInt xid (y, z, f, g))
 
           yid <- monotoneNFs
-          guard $ and $ do
-            x <- [True, False]
-            y <- [True, False]
-            z <- [True, False]
-            let f_val = f (x, y, z, False)
-            let g_val = g (x, y, z, f_val)
-            let y_val = fromInt yid (x, z, f_val, g_val)
-            return $ y /= y_val
+          ensure (\x y z f g -> y /= fromInt yid (x, z, f, g))
 
           zid <- monotoneNFs
-          guard $ and $ do
-            x <- [True, False]
-            y <- [True, False]
-            z <- [True, False]
-            let f_val = f (x, y, z, False)
-            let g_val = g (x, y, z, f_val)
-            let z_val = fromInt zid (x, y, f_val, g_val)
-            return $ z /= z_val
+          ensure (\x y z f g -> z /= fromInt zid (x, y, f, g))
 
           return (fid, gid, xid, yid, zid)                              
 
