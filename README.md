@@ -1,7 +1,7 @@
 bbforce
 =======
 
-# Boolean Brute Force
+## Boolean Brute Force
 
 This is a brute force solution for the first part of the following [puzzle from MIT Tech Review](http://www.technologyreview.com/sites/default/files/magazine/mitnews/puzzlecorner/MA13MITPuzzleCorner.pdf).
 
