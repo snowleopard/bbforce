@@ -1,7 +1,8 @@
 bbforce
 =======
 
-## Boolean Brute Force
+### Boolean Brute Force
+### or inverting the universe with two inverters
 
 [This](https://github.com/snowleopard/bbforce/blob/master/bbforce.hs) is a brute force solver for the first part of the following [puzzle from MIT Tech Review](http://www.technologyreview.com/sites/default/files/magazine/mitnews/puzzlecorner/MA13MITPuzzleCorner.pdf):
 
