@@ -27,23 +27,23 @@ solve = do
           gid <- monotoneNFs
 
           let ensure condition = guard $ and $ do
-              x <- [True, False]
-              y <- [True, False]
-              z <- [True, False]
-              let f = not $ fromInt fid (x, y, z, True)
-              let g = not $ fromInt gid (x, y, z, f)
-              return $ condition x y z f g
+              a <- [True, False]
+              b <- [True, False]
+              c <- [True, False]
+              let f = not $ fromInt fid (a, b, c, True)
+              let g = not $ fromInt gid (a, b, c, f)
+              return $ condition a b c f g
 
-          xid <- monotoneNFs
-          ensure (\x y z f g -> x /= fromInt xid (y, z, f, g))
+          aid <- monotoneNFs
+          ensure (\a b c f g -> a /= fromInt aid (b, c, f, g))
 
-          yid <- monotoneNFs
-          ensure (\x y z f g -> y /= fromInt yid (x, z, f, g))
+          bid <- monotoneNFs
+          ensure (\a b c f g -> b /= fromInt bid (a, c, f, g))
 
-          zid <- monotoneNFs
-          ensure (\x y z f g -> z /= fromInt zid (x, y, f, g))
+          cid <- monotoneNFs
+          ensure (\a b c f g -> c /= fromInt cid (a, b, f, g))
 
-          return (fid, gid, xid, yid, zid)                              
+          return (fid, gid, aid, bid, cid)                              
 
 main :: IO ()
 main = do
