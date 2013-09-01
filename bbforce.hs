@@ -6,13 +6,13 @@ type NibbleFun = Nibble -> Bool
 
 isMonotone :: NibbleFun -> Bool
 isMonotone f = and $ do    
-                x <- [True, False]
-                y <- [True, False]
-                z <- [True, False]
-                return $ f (False, x, y, z) <= f (True, x, y, z) 
-                      && f (x, False, y, z) <= f (x, True, y, z)
-                      && f (x, y, False, z) <= f (x, y, True, z)
-                      && f (x, y, z, False) <= f (x, y, z, True)
+                a <- [True, False]
+                b <- [True, False]
+                c <- [True, False]
+                return $ f (False, a, b, c) <= f (True, a, b, c) 
+                      && f (a, False, b, c) <= f (a, True, b, c)
+                      && f (a, b, False, c) <= f (a, b, True, c)
+                      && f (a, b, c, False) <= f (a, b, c, True)
 
 fromInt :: Int -> NibbleFun
 fromInt n (a, b, c, d) = testBit n (fromEnum a * 8 + fromEnum b * 4 + fromEnum c * 2 + fromEnum d)
@@ -24,19 +24,15 @@ monotoneNFs = filter (isMonotone . fromInt) allNFs
 solve :: [(Int, Int, Int, Int, Int)]
 solve = do
           fid <- monotoneNFs
-          let f = not . fromInt fid
-          
           gid <- monotoneNFs
-          let g = not . fromInt gid
 
-          let
-            ensure check = guard $ and $ do
+          let ensure condition = guard $ and $ do
               x <- [True, False]
               y <- [True, False]
               z <- [True, False]
-              let f_val = f (x, y, z, False)
-              let g_val = g (x, y, z, f_val)
-              return $ check x y z f_val g_val
+              let f = not $ fromInt fid (x, y, z, True)
+              let g = not $ fromInt gid (x, y, z, f)
+              return $ condition x y z f g
 
           xid <- monotoneNFs
           ensure (\x y z f g -> x /= fromInt xid (y, z, f, g))
