@@ -3,7 +3,7 @@ bbforce
 
 ## Boolean Brute Force
 
-[This](https://github.com/snowleopard/bbforce/blob/master/bbforce.hs) is a brute force solution for the first part of the following [puzzle from MIT Tech Review](http://www.technologyreview.com/sites/default/files/magazine/mitnews/puzzlecorner/MA13MITPuzzleCorner.pdf):
+[This](https://github.com/snowleopard/bbforce/blob/master/bbforce.hs) is a brute force solver for the first part of the following [puzzle from MIT Tech Review](http://www.technologyreview.com/sites/default/files/magazine/mitnews/puzzlecorner/MA13MITPuzzleCorner.pdf):
 
 >Howard Cohen has plenty of AND and OR gates but just two inverters. How can he invert three signals a, b, and c?
 
