@@ -1,0 +1,16 @@
+Generated solution
+==================
+
+We have two inverters that we can use. Let’s assume that at first we invert an ‘inverter-free’ function _f_. It turns out that the only choice that works is the [_majority function_](http://en.wikipedia.org/wiki/Majority_function):
+
+_f = ab + ac + bc_
+
+Now we can invert another ‘inverter-free’ function _g_ which can depend on four parameters: _a_, _b_, _c_, and _¬f_. Again, we have only one choice for _g_:
+
+_g = ¬f(a + b + c)  + abc_
+
+Notice that _g_ is nothing else than an XOR of _a_, _b_, and _c_. Finally, we can try to generate inversion of one of the inputs, say, _a_ using an 'inverter-free' function _h_ which can depend on four parameters: _b_, _c_, _¬f_, _¬g_ (note _h_ cannot depend on _a_ since it is monotonic). The only function which does the job is:
+
+_h = ¬f(b + c + ¬g) + ¬gbc_
+
+It is not difficult to symbolically check that _h = ¬a_. Since functions _f_ and _g_ are symmetric with respect to _a_, _b_ and _c_, the other two signals (_b_ and _c_) can be inverted in the same way.
