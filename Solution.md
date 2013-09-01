@@ -16,3 +16,5 @@ _h = ¬f(b + c + ¬g) + ¬gbc_
 It is not difficult to symbolically check that _h = ¬a_ as intended. Since functions _f_ and _g_ are symmetric with respect to _a_, _b_ and _c_, the other two signals _b_ and _c_ can be inverted in the same way.
 
 The solution is quite complex, so it's no wonder I couldn't figure it out by hand.
+
+P.S.: Interesting! I've just noticed that the pair of outputs _(f, g)_ form a [_full adder_](http://en.wikipedia.org/wiki/Adder_(electronics)#Full_adder).
