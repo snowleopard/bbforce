@@ -1,7 +1,7 @@
 Generated solution
 ==================
 
-We have two inverters that we can use. Let’s assume that at first we invert an ‘inverter-free’ function _f_. It turns out that the only choice that works is the [_majority function_](http://en.wikipedia.org/wiki/Majority_function):
+We have two inverters that we can use. Let’s assume that at first we invert an ‘inverter-free’ function _f_. It turns out that the only choice that works is the [_majority function_][http://en.wikipedia.org/wiki/Majority_function]:
 
 _f = ab + ac + bc_
 
@@ -17,4 +17,4 @@ It is not difficult to symbolically check that _h = ¬a_ as intended. Since func
 
 The solution is quite complex, so it's no wonder I couldn't figure it out by hand.
 
-P.S.: Interesting! I've just noticed that the pair of outputs _(f, g)_ form a [_full adder_](http://en.wikipedia.org/wiki/Adder_(electronics)#Full_adder).
+P.S.: Interesting! I've just noticed that the pair of outputs _(f, g)_ form a [_full adder_][http://en.wikipedia.org/wiki/Adder_(electronics)#Full_adder].
